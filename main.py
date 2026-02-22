@@ -566,36 +566,36 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     elif data == "public_channels":
-    channels = load_channels()  # استدعاء القنوات من channels.json
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
-    ])
+        channels = load_channels()  # استدعاء القنوات من channels.json
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        ])
         kbd_channels = InlineKeyboardMarkup([
         [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
-    kbd_channels = InlineKeyboardMarkup([
-        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+        kbd_channels = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
     ])
     await query.message.reply_text(
         "📺 *قنواتنا العامة:*",
