@@ -64,6 +64,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+CHANNELS_FILE = Path(__file__).parent / "channels.json"
+
+def load_channels():
+    with open(CHANNELS_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        return data.get("channels", [])
+
 # ─────────────────────────────────────────────
 #  قاعدة البيانات SQLite
 # ─────────────────────────────────────────────
@@ -400,6 +407,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # رسالة الترحيب
     kbd = InlineKeyboardMarkup([[
         InlineKeyboardButton(BTNS["btn_next"], callback_data="main_menu")
+        [InlineKeyboardButton("قـنـواتـنـا الـعـامـة", callback_data="public_channels")]
     ]])
     await update.message.reply_text(
         f"✨ *أهلاً وسهلاً {user.first_name}!*\n\n"
@@ -557,6 +565,44 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode=ParseMode.MARKDOWN
         )
 
+    elif data == "public_channels":
+    channels = load_channels()  # استدعاء القنوات من channels.json
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+        kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    kbd_channels = InlineKeyboardMarkup([
+        [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
+    ])
+    await query.message.reply_text(
+        "📺 *قنواتنا العامة:*",
+        reply_markup=kbd_channels,
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
     elif data == "redeem":
         await query.message.reply_text(
             "🎁 *استبدال النقاط:*\n\n"
