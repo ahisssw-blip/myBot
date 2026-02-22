@@ -572,7 +572,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ])
 
         await query.message.reply_text(
-        "📺 *قنواتنا العامة:*",
+        "📺 *قـنـواتـنـا الـعـامـة 🔥👏 .. اشتركوا بالكل .. كل قناة رح يكون الها اختصاص وتوجه 💯⚡️:*",
         reply_markup=kbd_channels,
         parse_mode=ParseMode.MARKDOWN
     )
