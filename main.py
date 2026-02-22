@@ -1270,6 +1270,7 @@ def main():
 
     # ── أوامر المستخدمين ──
     app.add_handler(CommandHandler("start",     cmd_start))
+    app.add_handler(CommandHandler("menu", show_main_menu))
     app.add_handler(CommandHandler("help",      cmd_help))
 
     # ── أوامر الأدمن ──
