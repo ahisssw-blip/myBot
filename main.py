@@ -571,7 +571,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels
         ])
 
-    await query.message.reply_text(
+        await query.message.reply_text(
         "📺 *قنواتنا العامة:*",
         reply_markup=kbd_channels,
         parse_mode=ParseMode.MARKDOWN
