@@ -1268,6 +1268,19 @@ def main():
 
     app = Application.builder().token(TOKEN).build()
 
+    # ─────────────────────────────
+    # ✅ أضف هذا الجزء هنا (زر Menu)
+    # ─────────────────────────────
+    async def set_commands(app):
+        commands = [
+            BotCommand("start", "بدء"),
+            BotCommand("menu", "القائمة"),
+            BotCommand("help", "مساعدة"),
+        ]
+        await app.bot.set_my_commands(commands)
+
+    app.post_init = set_commands
+
     # ── أوامر المستخدمين ──
     app.add_handler(CommandHandler("start",     cmd_start))
     app.add_handler(CommandHandler("menu", show_main_menu))
