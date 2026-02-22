@@ -405,7 +405,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     # رسالة الترحيب
-    kbd = InlineKeyboardMarkup([[
+    kbd = InlineKeyboardMarkup([
         [InlineKeyboardButton(BTNS["btn_next"], callback_data="main_menu")],
         [InlineKeyboardButton("قـنـواتـنـا الـعـامـة", callback_data="public_channels")]
     ])
