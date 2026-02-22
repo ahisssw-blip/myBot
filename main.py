@@ -406,9 +406,9 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # رسالة الترحيب
     kbd = InlineKeyboardMarkup([[
-        InlineKeyboardButton(BTNS["btn_next"], callback_data="main_menu")
+        [InlineKeyboardButton(BTNS["btn_next"], callback_data="main_menu")]
         [InlineKeyboardButton("قـنـواتـنـا الـعـامـة", callback_data="public_channels")]
-    ]])
+    ])
     await update.message.reply_text(
         f"✨ *أهلاً وسهلاً {user.first_name}!*\n\n"
         f"تم التحقق من اشتراكك في قناة البوت بنجاح ✅\n\n"
