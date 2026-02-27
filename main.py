@@ -231,7 +231,19 @@ PRIVATE_CHANNELS = [
 ]
 
 async def show_pay_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, sub_key: str, price_usd=10):
-    context.user_data["sub_type"] = sub_key
+
+    if sub_key == "VIP":
+        context.user_data["sub_type"] = {
+        "type": "vip"
+        }
+    else:
+    # sub_key شكله "قناة 3"
+        idx = int(sub_key.split()[-1])
+        context.user_data["sub_type"] = {
+        "type": "single",
+        "channel_index": idx
+        }
+
     label = SUBS.get(sub_key, {}).get("label", sub_key)
     price_usd = SUBS.get(sub_key, {}).get("price_usd", price_usd)
     price_syp = SUBS.get(sub_key, {}).get("price_syp", price_usd * 3000)  # افترضنا هنا أن 1 USD = 3000 ل.س على سبيل المثال
@@ -275,20 +287,32 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     elif data.startswith("sel_ch_"):
         idx = int(data.split("_")[2])
-        context.user_data["selected_channel"] = PRIVATE_CHANNELS[idx-1]
+        context.user_data["sub_type"] = {
+            "type": "single",
+            "channel_index": idx
+    }
         await show_pay_menu(update, context, f"قناة {idx}", price_usd=10)
-    
-    elif data == "pay_VIP": await show_pay_menu(update, context, "VIP", price_usd=25)
+    elif data == "pay_VIP":
+        context.user_data["sub_type"] = {
+            "type": "vip"
+        }
+        await show_pay_menu(update, context, "VIP", price_usd=25)
     
     elif data == "sub_details":
-        sub_key = context.user_data.get("sub_type", "VIP")
-        if "VIP" in sub_key:
+        sub = context.user_data.get("sub_type")
+
+        if not sub:
+            await query.answer("حدث خطأ، أعد المحاولة.")
+            return
+
+        if sub["type"] == "vip":
             details = SUBS.get("VIP", {}).get("details", "تفاصيل اشتراك VIP.")
             back_cb = "pay_VIP"
         else:
+            idx = sub["channel_index"]
             details = "اشتراك قناة خاصة واحدة بسعر 10$. تدفع لمرة واحدة. اشتراك دائم, نشر يومي ✅✅ ."
-            back_cb = f"sel_ch_{sub_key.split()[-1]}" if "قناة" in sub_key else "single_ch_menu"
-            
+            back_cb = f"sel_ch_{idx}"
+           
         await query.edit_message_text(details, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔙 رجــوع", callback_data=back_cb)]]), parse_mode=ParseMode.MARKDOWN)
 
     elif data.startswith("meth_"):
@@ -360,13 +384,37 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         kbd = InlineKeyboardMarkup([[InlineKeyboardButton("✅ قبول", callback_data=f"adm_ok_{user.id}_{pay_id}"), InlineKeyboardButton("❌ رفض", callback_data=f"adm_no_{user.id}_{pay_id}")]])
         for aid in ADMIN_IDS: await safe_send(context.bot, aid, text=f"🔔 *طلب دفع جديد!*\n👤 {user.first_name}\n🆔 `{user.id}`\n💎 {sub_type}\n💳 {pay_method}\n🔑 `{text}`", reply_markup=kbd)
         return
-
     if user.id in ADMIN_IDS:
         if text.startswith("بث "):
             msg = text.replace("بث ", "").strip()
-            users = [r['user_id'] for r in get_db().execute("SELECT user_id FROM users").fetchall()]
-            for uid in users: await safe_send(context.bot, uid, text=f"💬 رســالــة مــن الإدارة 📩:*\n\n{msg}", parse_mode=ParseMode.MARKDOWN); await asyncio.sleep(0.05)
-            await update.message.reply_text(f"✅ تم الإرسال لـ {len(users)} مستخدم.")
+
+            with get_db() as conn:
+                users = [r['user_id'] for r in conn.execute("SELECT user_id FROM users").fetchall()]
+
+            sent = 0
+            blocked = 0
+
+            for uid in users:
+                try:
+                    await context.bot.send_message(
+                        chat_id=uid,
+                        text=f"💬 *رســالــة مــن الإدارة 📩:*\n\n{msg}",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    sent += 1
+                    await asyncio.sleep(0.05)
+                    
+                except TelegramError as e:
+                    if "bot was blocked by the user" in str(e):
+                        blocked += 1
+                    else:
+                        print(f"خطأ مع {uid}: {e}")
+
+            await update.message.reply_text(
+                f"✅ تم الإرسال لـ {sent} مستخدم\n"
+                f"🚫 {blocked} مستخدمين حاظرين البوت"
+            )
+
         elif text.startswith("رد "):
             parts = text.split(maxsplit=2)
             if len(parts) == 3:
