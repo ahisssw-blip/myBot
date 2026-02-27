@@ -252,7 +252,7 @@ async def show_pay_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, sub_
         [InlineKeyboardButton("📝 تــفــاصــيــل الاشــتــراك", callback_data="sub_details")],
         [InlineKeyboardButton(BTNS.get("btn_back", "🔙 رجــوع"), callback_data=back_cb)]
     ])
-    await update.callback_query.edit_message_text(f"💎 *الـفـئـة:* {label}\n💰 *الـتـكـلـفـة:* {price_usd}$\n\nاخـتـر وسـيـلـة الـدفـع 👇", reply_markup=kbd, parse_mode=ParseMode.MARKDOWN)
+    await update.callback_query.edit_message_text(f"💎 *الـفـئـة:* {label}\n💰 *الـتـكـلـفـة:* {price_usd}$\n\nاخـتـر وسـيـلـة الـدفـع\n(إذا لم تجد طريقة الدفع المتاحة لديك، تواصل معنا . نؤمن الاستلام من جميع انحاء العالم وبكل الطرق 👌🔥) 👇", reply_markup=kbd, parse_mode=ParseMode.MARKDOWN)
 
 # ─────────────────────────────────────────────
 #  معالج الضغطات
