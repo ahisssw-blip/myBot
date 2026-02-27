@@ -1,7 +1,7 @@
 {
   "_comment": "ملف إعدادات البوت المطور - v3.0",
 
-  "TOKEN": "8310738445:AAGFv4AG8W-xUY6OHIbIQkarBEPu4f1pECU",
+  "TOKEN": "8327790208:AAGRq3kDUS9bfkH2LGG7JUSX4bt_tYZinLs",
   "ADMIN_IDS": [6712633269],
   "CHANNEL_ID": -1003766107273,
   "CHANNEL_LINK": "https://t.me/+6jUlo5a_aIRlMDU0",
@@ -17,7 +17,7 @@
   "WALLETS": {
     "sham_cash": "681e555f4f7c351f777d5c7d2408884a",
     "sham_account_name": "B R S",
-    "syriatel_cash": "82929214",
+    "syriatel_cash": "يرجى التواصل مع الدعم للدفع بهذه الطريقة، ارقام سيريتل كاش متغيرة باستمرار.",
     "usdt_bep20": "0x8045A24f0f3CC11E038d417B71a06673d5430422",
     "usdt_trc20": "TMfSusQ525NkRjxP9UwVWhr69cWCeUXTNQ"
   },
