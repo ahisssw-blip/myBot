@@ -306,13 +306,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 await query.message.reply_text("استخدم الزر للعودة 👇", reply_markup=back_kbd)
             else: await query.edit_message_text(text, reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "syria":
-            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه باللـيرة السورية (سعر الصرف 12.000) إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n\n(بطريقة التحويل اليدوي) \nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
+            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه باللـيـرة الـسـوريـة (سعر الصرف 12.000) إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n\n(بطريقة التحويل اليدوي) \nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "usdt":
             await query.edit_message_text(
                 f"🪙 *USDT*\n\n"
                 "قــم بــتــحــويــل الــمــبــلــغ إلــى:\n\n"
-                f"BEP20:\n `{WALLETS.get('usdt_bep20')}`\n\n"\n\n
-                f"TRC20:\n `{WALLETS.get('usdt_trc20')}`\n\n"ln
+                f"BEP20:\n `{WALLETS.get('usdt_bep20')}`\n\n"
+                f"TRC20:\n `{WALLETS.get('usdt_trc20')}`\n\n"
                 "ثـم أرسـل TxID هـنـا 👇", 
                 reply_markup=back_kbd, 
                 parse_mode=ParseMode.MARKDOWN
