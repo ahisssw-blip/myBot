@@ -300,7 +300,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         back_kbd = InlineKeyboardMarkup([[InlineKeyboardButton("🔙 رجوع", callback_data=back_cb)]])
         if method == "sham":
-            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه بالـلـيـرة الـسـوريـة (سعر الصرف 12.000) إلى::\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇"
+            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه بالـلـيـرة الـسـوريـة (سعر الصرف 12.000) إلى:\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇"
             if (BASE_DIR / "sham.jpg").exists():
                 await query.message.reply_photo(photo=open(BASE_DIR / "sham.jpg", "rb"), caption=text, parse_mode=ParseMode.MARKDOWN)
                 await query.message.reply_text("استخدم الزر للعودة 👇", reply_markup=back_kbd)
