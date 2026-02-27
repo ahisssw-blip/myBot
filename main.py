@@ -252,7 +252,7 @@ async def show_pay_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, sub_
         [InlineKeyboardButton("📝 تــفــاصــيــل الاشــتــراك", callback_data="sub_details")],
         [InlineKeyboardButton(BTNS.get("btn_back", "🔙 رجــوع"), callback_data=back_cb)]
     ])
-    await update.callback_query.edit_message_text(f"💎 *الـفـئـة:* {label}\n💰 *الـتـكـلـفـة:* {price_usd}$\n\nاخـتـر وسـيـلـة الـدفـع👇👇 \n\n\n(إذا لم تجد طريقة الدفع المتاحة لديك، تواصل معنا . نؤمن الاستلام من جميع انحاء العالم وبكل الطرق 👌🔥)", reply_markup=kbd, parse_mode=ParseMode.MARKDOWN)
+    await update.callback_query.edit_message_text(f"💎 *الـفـئـة:* {label}\n💰 *الـتـكـلـفـة:* {price_usd}$\n\nاخـتـر وسـيـلـة الـدفـع👇👇 \n\n\n(إن لم تجد طريقة الدفع المتاحة لديك، تواصل معنا، نؤمن الاستلام من جميع انحاء العالم وبكل الطرق 👌🔥)", reply_markup=kbd, parse_mode=ParseMode.MARKDOWN)
 
 # ─────────────────────────────────────────────
 #  معالج الضغطات
@@ -300,13 +300,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         back_kbd = InlineKeyboardMarkup([[InlineKeyboardButton("🔙 رجوع", callback_data=back_cb)]])
         if method == "sham":
-            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه بالـلـيـرة الـسـوريـة (سعر الصرف 12.000) إلى:\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇"
+            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه بالـلـيـرة الـسـوريـة (سعر الصرف 12,000) إلى:\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇"
             if (BASE_DIR / "sham.jpg").exists():
                 await query.message.reply_photo(photo=open(BASE_DIR / "sham.jpg", "rb"), caption=text, parse_mode=ParseMode.MARKDOWN)
                 await query.message.reply_text("استخدم الزر للعودة 👇", reply_markup=back_kbd)
             else: await query.edit_message_text(text, reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "syria":
-            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه باللـيـرة الـسـوريـة (سعر الصرف 12.000) إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n\n(بطريقة التحويل اليدوي) \nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
+            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه باللـيـرة الـسـوريـة (سعر الصرف 12,000) إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n\n(بطريقة التحويل اليدوي) \nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "usdt":
             await query.edit_message_text(
                 f"🪙 *USDT*\n\n"
