@@ -311,8 +311,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.edit_message_text(
                 f"🪙 *USDT*\n\n"
                 "قــم بــتــحــويــل الــمــبــلــغ إلــى:\n\n"
-                f"BEP20:\n `{WALLETS.get('usdt_bep20')}`\n\n"
-                f"TRC20:\n `{WALLETS.get('usdt_trc20')}`\n\n"
+                f"BEP20:\n `{WALLETS.get('usdt_bep20')}`\n\n"\n\n
+                f"TRC20:\n `{WALLETS.get('usdt_trc20')}`\n\n"ln
                 "ثـم أرسـل TxID هـنـا 👇", 
                 reply_markup=back_kbd, 
                 parse_mode=ParseMode.MARKDOWN
