@@ -221,7 +221,7 @@ async def show_sub_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("⭐ اشـتـراك لـقـنـاة خـاصـة واحـدة", callback_data="single_ch_menu")],
         [InlineKeyboardButton(BTNS.get("btn_back", "🔙 رجــوع"), callback_data="main_menu")]
     ])
-    await update.callback_query.edit_message_text("💯🔥 *اختر الاشتراك المطلوب* 🔥💯\n(التفاصيل بالداخل)", reply_markup=kbd, parse_mode=ParseMode.MARKDOWN)
+    await update.callback_query.edit_message_text("💯🔥 *اخــتــر الاشــتــراك الــمــطــلــوب* 🔥💯\n(التفاصيل بالداخل)", reply_markup=kbd, parse_mode=ParseMode.MARKDOWN)
 
 PRIVATE_CHANNELS = [
     "قناة كمشتك", "قناة استراد الثورة", "قناة الجمهورية+الرمل", "قناة جبلة جبيبات نقعة",
@@ -300,13 +300,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         back_kbd = InlineKeyboardMarkup([[InlineKeyboardButton("🔙 رجوع", callback_data=back_cb)]])
         if method == "sham":
-            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل الـمـبـلـغ إلـى:\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇"
+            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل الـمـبـلـغ بالـدولار أو مـا يـعـادلـه بالـلـيـرة الـسـوريـة (سعر الصرف 12.000) إلى::\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇"
             if (BASE_DIR / "sham.jpg").exists():
                 await query.message.reply_photo(photo=open(BASE_DIR / "sham.jpg", "rb"), caption=text, parse_mode=ParseMode.MARKDOWN)
                 await query.message.reply_text("استخدم الزر للعودة 👇", reply_markup=back_kbd)
             else: await query.edit_message_text(text, reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "syria":
-            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\n\nقـم بـتـحـويـل الـمـبـلـغ إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n\n(بطريقة التحويل اليدوي) \nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
+            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\n\nقـم بـتـحـويـل الـمـبـلـغ بالـولار أو مـا يـعـادلـه باللـيرة السورية (سعر الصرف 12.000) إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n\n(بطريقة التحويل اليدوي) \nثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "usdt":
             await query.edit_message_text(
                 f"🪙 *USDT*\n\n"
