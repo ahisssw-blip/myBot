@@ -365,12 +365,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if text.startswith("بث "):
             msg = text.replace("بث ", "").strip()
             users = [r['user_id'] for r in get_db().execute("SELECT user_id FROM users").fetchall()]
-            for uid in users: await safe_send(context.bot, uid, text=f"📢 *رسالة جماعية:*\n\n{msg}", parse_mode=ParseMode.MARKDOWN); await asyncio.sleep(0.05)
+            for uid in users: await safe_send(context.bot, uid, text=f"💬 رســالــة مــن الإدارة 📩:*\n\n{msg}", parse_mode=ParseMode.MARKDOWN); await asyncio.sleep(0.05)
             await update.message.reply_text(f"✅ تم الإرسال لـ {len(users)} مستخدم.")
         elif text.startswith("رد "):
             parts = text.split(maxsplit=2)
             if len(parts) == 3:
-                if await safe_send(context.bot, int(parts[1]), text=f"💬 *رد من الإدارة:*\n\n{parts[2]}"): await update.message.reply_text("✅ تم الرد.")
+                if await safe_send(context.bot, int(parts[1]), text=f"💬 رســالــة مــن الإدارة 📩:*\n\n{parts[2]}"): await update.message.reply_text("✅ تم الرد.")
 
 # ─────────────────────────────────────────────
 #  لوحة الأدمن
