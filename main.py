@@ -324,7 +324,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             kbd = [[InlineKeyboardButton(ch["name"], url=ch["url"])] for ch in channels]
             kbd.append([InlineKeyboardButton("🔙 رجــوع", callback_data="main_menu")])
-            await query.edit_message_text("📺 قــنــواتــنــا الــعــامــة 🔥🔥\n\n-هذه القائمة متغيرة باستمرار. \n\n-ملاحظة: القناة التي نكتب بجانبها (اساسية) .. يكون النشر عليها حالياً. \n\n-الــنــشــر حــالــيــاً عــلــى قــنــاة:\n\nمستمروووون ♥️♥️", reply_markup=InlineKeyboardMarkup(kbd))
+            await query.edit_message_text("📺 قــنــواتــنــا الــعــامــة 🔥🔥\n\n-هذه القائمة متغيرة باستمرار. \n\n-ملاحظة: القناة التي نكتب بجانبها (اساسية) .. يكون النشر عليها حالياً. \n\n-الــنــشــر حــالــيــاً عــلــى قــنــاة:\n\n🔥🔥 xLattakia 🔞🚫", reply_markup=InlineKeyboardMarkup(kbd))
 
     elif data == "support":
         kbd = [[InlineKeyboardButton(f"💬 {SUPPORT.get('label1')} - واتـسـاب", url=f"https://wa.me/{SUPPORT.get('whatsapp1')}")],
