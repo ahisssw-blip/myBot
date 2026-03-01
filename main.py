@@ -305,7 +305,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if row: kbd.append(row)
             
             kbd.append([InlineKeyboardButton("🔙 رجــوع", callback_data="sub_menu")])
-            await query.edit_message_text("📺 قــنــواتــنــا الــعــامــة 🔥🔥\n\n-نقوم بتغيير هذه القائمة باستمرار.\n-سيكون لكل قناة محتوى خاص بها. 🔥\n-يمكنك الاشتراك بهم جميعاً لتبقى معنا.\n\nاضغط على اسم القناة للانتقال إليها:", reply_markup=InlineKeyboardMarkup(kbd))
+            await query.edit_message_text("📺 قــنــواتــنــا الــعــامــة 🔥🔥\n\n-نقوم بتغيير هذه القائمة باستمرار.\n- قناتنا الاساسية حالياً .قتاة تجمع: \nhttps://t.me/+_kFc8VjdB4llNjI8\n-سيكون لكل قناة محتوى خاص بها. 🔥\n-يمكنك الاشتراك بهم جميعاً لتبقى معنا.\n\nاضغط على اسم القناة للانتقال إليها:", reply_markup=InlineKeyboardMarkup(kbd))
 
     elif data == "support":
         kbd = [[InlineKeyboardButton(f"💬 {SUPPORT.get('label1')} - واتـسـاب", url=f"https://wa.me/{SUPPORT.get('whatsapp1')}")],
