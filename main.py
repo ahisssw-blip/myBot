@@ -247,7 +247,7 @@ async def show_pay_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, sub_
     
     text = (
         f"💎 *الـفـئـة:* {label}\n"
-        f"\n💰 الـتـكـلـفـة: {price_usd}$ أو {price_syp:,} ل.س\n\n"
+        f"\n💰 الـتـكـلـفـة: {price_usd}$
         "*\nاخـتـر وسـيـلـة الـدفـع👇👇*\n\n"
         "(إن لم تجد طريقة الدفع المتاحة لديك، تواصل معنا، نؤمن الاستلام من جميع انحاء العالم وبكل الطرق 👌🔥)"
     )
@@ -279,13 +279,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         back_kbd = InlineKeyboardMarkup([[InlineKeyboardButton("🔙 رجوع", callback_data="pay_VIP")]])
         if method == "sham":
-            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل 25$ أو 3000 ل.س جـديـدة إلى:\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\n\n*ثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇*"
+            text = f"💳 *شــام كــاش*\n\nقـم بـتـحـويـل 25$ أو 3500 ل.س جـديـدة إلى:\n\n`{WALLETS.get('sham_cash')}`\n\nأســم الــحــســاب: {WALLETS.get('sham_account_name')}\n\n\n*ثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇*"
             if (BASE_DIR / "sham.jpg").exists():
                 await query.message.reply_photo(photo=open(BASE_DIR / "sham.jpg", "rb"), caption=text, parse_mode=ParseMode.MARKDOWN)
                 await query.message.reply_text("استخدم الزر للعودة 👇", reply_markup=back_kbd)
             else: await query.edit_message_text(text, reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "syria":
-            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\nقـم بـتـحـويـل 3000 ل.س جـديـدة إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n*ثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇*", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
+            await query.edit_message_text(f"📱 *ســيــريــتــل كــاش*\n\nقـم بـتـحـويـل 3500 ل.س جـديـدة إلى:\n\n`{WALLETS.get('syriatel_cash')}`\n\n*ثـم أرسـل رقـم الـعـمـلـيـة هـنـا 👇*", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
         elif method == "usdt":
             await query.edit_message_text(f"🪙 *USDT*\n\nقــم بــتــحــويــل 25$ إلــى أحـد الـمـحـافـظ الـتـالـيـة:\n\nBEP20:\n `{WALLETS.get('usdt_bep20')}`\n\nTRC20:\n `{WALLETS.get('usdt_trc20')}`\n\nيمكنك التواصل مع الدعم للتحويل المباشر (خارج السلسلة) إلى بينانس أو كوين اكس أو تراست والت أو سي والت .\nبالإضافة إلى شبكات: Erc20 ETH - TON .\n\n*ثـم أرسـل TxID هـنـا 👇*", reply_markup=back_kbd, parse_mode=ParseMode.MARKDOWN)
 
