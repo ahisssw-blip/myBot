@@ -235,7 +235,7 @@ async def show_sub_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_pay_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, sub_key: str):
     label = SUBS.get(sub_key, {}).get("label", sub_key)
     price_usd = SUBS.get(sub_key, {}).get("price_usd", 25)
-    price_syp = SUBS.get(sub_key, {}).get("price_syp", price_usd * 12000)
+    price_syp = SUBS.get(sub_key, {}).get("price_syp", price_usd * 14000)
     
     kbd = InlineKeyboardMarkup([
         [InlineKeyboardButton(BTNS.get("btn_sham", "💳 شـام كاش"), callback_data="meth_sham"),
@@ -247,7 +247,7 @@ async def show_pay_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, sub_
     
     text = (
         f"💎 *الـفـئـة:* {label}\n"
-        f"\n💰 الـتـكـلـفـة: {price_usd}$
+        f"\n💰 الـتـكـلـفـة: {price_usd}$"
         "*\nاخـتـر وسـيـلـة الـدفـع👇👇*\n\n"
         "(إن لم تجد طريقة الدفع المتاحة لديك، تواصل معنا، نؤمن الاستلام من جميع انحاء العالم وبكل الطرق 👌🔥)"
     )
